@@ -1,4 +1,6 @@
-type Rating = 0 | 1 | 2 | 3 | 4 | 5;
+import IceCreamRating from "~/components/IceCreamRating";
+
+export type Rating = 0 | 1 | 2 | 3 | 4 | 5;
 
 export type IceCream = {
   id: number;
@@ -30,18 +32,8 @@ export default function HomePage() {
         </section>
         <section class="mt-20">
           <div class="grid grid-cols-2 gap-4">
-            {iceCreams.map(({ flavor, rating }) => (
-              <div class="flex justify-between border-b-2 border-dashed border-gray-300 py-1">
-                <h2 class="text-gray-100">{flavor}</h2>
-                <div class="flex gap-2">
-                  {[...Array(rating)].map((_, i) => (
-                    <span class="text-pink-300">$</span>
-                  ))}
-                  {[...Array(5 - rating)].map((_, i) => (
-                    <span class="text-gray-400">$</span>
-                  ))}
-                </div>
-              </div>
+            {iceCreams.map((iceCream) => (
+              <IceCreamRating iceCream={iceCream} />
             ))}
           </div>
         </section>
