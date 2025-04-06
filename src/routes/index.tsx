@@ -1,6 +1,6 @@
 type Rating = 0 | 1 | 2 | 3 | 4 | 5;
 
-type IceCream = {
+export type IceCream = {
   id: number;
   flavor: string;
   rating: Rating;
@@ -18,8 +18,8 @@ const iceCreams: IceCream[] = [
 export default function HomePage() {
   return (
     <main class="text-center mx-auto text-gray-700 p-4">
-      <div class="mx-auto max-w-md">
-        <section class="flex flex-col items-center justify-center mt-20 mx-auto max-w-md">
+      <div class="mx-auto max-w-2xl">
+        <section class="flex flex-col items-center justify-center mt-20">
           <h1 class="font-bold text-2xl text-pink-300">
             it's time for an ice cream date night!
           </h1>
@@ -29,9 +29,9 @@ export default function HomePage() {
           </p>
         </section>
         <section class="mt-20">
-          <div>
+          <div class="grid grid-cols-2 gap-4">
             {iceCreams.map(({ flavor, rating }) => (
-              <div class="flex justify-between border-b-2 border-dashed border-gray-300 py-2">
+              <div class="flex justify-between border-b-2 border-dashed border-gray-300 py-1">
                 <h2 class="text-gray-100">{flavor}</h2>
                 <div class="flex gap-2">
                   {[...Array(rating)].map((_, i) => (
