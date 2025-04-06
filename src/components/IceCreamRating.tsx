@@ -37,7 +37,7 @@ const IceCreamRating: FunctionalComponent<{ iceCream: IceCream }> = ({
             onClick={() => handleClick(rating() + i + 1)}
             class="cursor-pointer"
           >
-            <HeartIcon class="text-white size-5" />
+            <HeartIcon class="text-white fill-black size-5" />
           </button>
         ))}
       </div>
