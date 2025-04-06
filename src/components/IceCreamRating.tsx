@@ -1,25 +1,26 @@
-import { createSignal, type JSX } from "solid-js";
-import type { IceCream, Rating } from "../routes/index.tsx";
-
-type Component<P = {}> = (props: P) => JSX.Element;
-type ParentProps<P = {}> = P & { children?: JSX.Element };
-type ParentComponent<P = {}> = Component<ParentProps<P>>;
+import { createSignal } from "solid-js";
+import type {
+  IceCream,
+  FunctionalComponent,
+  Rating,
+} from "../routes/index.tsx";
+import HeartIcon from "./icons/HeartIcon.jsx";
 
 function isRating(value: number): value is Rating {
   return value >= 1 && value <= 5;
 }
 
-const IceCreamRating: ParentComponent<{ iceCream: IceCream }> = ({
+const IceCreamRating: FunctionalComponent<{ iceCream: IceCream }> = ({
   iceCream,
 }) => {
   const { flavor } = iceCream;
   const [rating, setRating] = createSignal<Rating>(iceCream.rating);
 
-  const handleClick = (i: number) => {
-    if (!isRating(i)) {
+  const handleClick = (newRating: number) => {
+    if (!isRating(newRating)) {
       throw new Error("Invalid rating");
     }
-    setRating(i);
+    setRating(newRating);
   };
 
   return (
@@ -28,7 +29,7 @@ const IceCreamRating: ParentComponent<{ iceCream: IceCream }> = ({
       <div class="flex gap-2">
         {[...Array(rating())].map((_, i) => (
           <button onClick={() => handleClick(i + 1)} class="cursor-pointer">
-            ❤️
+            <HeartIcon class="text-white fill-pink-300 size-5" />
           </button>
         ))}
         {[...Array(5 - rating())].map((_, i) => (
@@ -36,7 +37,7 @@ const IceCreamRating: ParentComponent<{ iceCream: IceCream }> = ({
             onClick={() => handleClick(rating() + i + 1)}
             class="cursor-pointer"
           >
-            🩶
+            <HeartIcon class="text-white size-5" />
           </button>
         ))}
       </div>

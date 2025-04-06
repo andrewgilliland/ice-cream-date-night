@@ -1,4 +1,9 @@
+import { type JSX } from "solid-js";
 import IceCreamRating from "~/components/IceCreamRating";
+
+type Component<P = {}> = (props: P) => JSX.Element;
+type ParentProps<P = {}> = P & { children?: JSX.Element };
+export type FunctionalComponent<P = {}> = Component<ParentProps<P>>;
 
 export type Rating = 0 | 1 | 2 | 3 | 4 | 5;
 
