@@ -24,7 +24,7 @@ const IceCreamRating: FunctionalComponent<{ iceCream: IceCream }> = ({
   };
 
   return (
-    <div class="flex justify-between border-b-2 border-dashed border-gray-300 py-1">
+    <div class="flex flex-col sm:flex-row items-center justify-between border-b-2 border-dashed border-gray-300 py-1">
       <h2 class="text-gray-100">{flavor}</h2>
       <div class="flex gap-2">
         {[...Array(rating())].map((_, i) => (
